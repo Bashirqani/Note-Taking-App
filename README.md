@@ -17,6 +17,23 @@ Setup Instructions.
 1. Install Dependencies
 npm install
 
+or one by one, make sure the script part is added.
+"scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.5",
+    "nodemon": "^3.1.9"
+  }
+
 
 2. Set Up MongoDB
 Make sure MongoDB is installed and running on your system.
@@ -33,7 +50,8 @@ Visit http://localhost:3000 in your browser.
 
 
 
-API Endpoints
+API Endpoints, if using thunder client, after registeration the result will give you a "token"
+you need that to send requests. 
 
 1. Add a Note
 POST /addNote
