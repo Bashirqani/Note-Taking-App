@@ -97,6 +97,10 @@ Response
 }
 
 
+this is the link to my borwer note taking app address.
+http://127.0.0.1:5500/Frontend/note.html  
+
+
 Lessons and challenges i faced while building my note taking app.
 
 Implementing CRUD operations with MongoDB taught me how to handle database interactions.
