@@ -1,0 +1,119 @@
+/* Login Page Styles */
+body.login-style {
+    font-family: Arial, sans-serif;
+    background-color: #222;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+body.login-style main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+body.login-style section {
+    background: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 300px;
+    margin: 10px;
+}
+
+body.login-style form {
+    display: flex;
+    flex-direction: column;
+}
+
+body.login-style input, 
+body.login-style button {
+    margin: 10px 0px; 
+    padding: 10px 2px;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+}
+
+body.login-style button {
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+}
+
+body.login-style button:hover {
+    background-color: #0056b3;
+}
+
+body.login-style footer {
+    position: absolute;
+    bottom: 10px;
+    color: gray;
+}
+
+
+#message-box {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #27ae60; /* Green for success */
+    color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
+    display: none;
+    z-index: 1000;
+    font-size: 16px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s ease-in-out;
+}
+
+#message-box.error {
+    background: #e74c3c; /* Red for errors */
+}
+
+.hidden {
+    display: none;
+}
+
+
+.password-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+.password-container input {
+    flex: 1;
+    padding-right: 90px; /* Make space for the "Show password" text */
+}
+
+.show-password {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    color: blue;
+    font-size: 14px;
+    user-select: none;
+}
+
+.show-password:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+
+
+
