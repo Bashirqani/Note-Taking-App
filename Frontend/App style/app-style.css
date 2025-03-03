@@ -263,3 +263,61 @@ body.app-style .delete-btn:hover {
 #cancelDelete:hover {
     background: #b3b3b3;
 }
+
+/* Responsive Styles for smaller screen*/
+@media screen and (max-width: 768px) {
+    body.app-style {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+    }
+
+    body.app-style main {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        height: auto;
+        width: 90%;
+        padding: 10px;
+    }
+
+    /* Adjust Add Note Section */
+    body.app-style #add-note-section {
+        width: 90%;
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+
+    /* Adjust Notes Section */
+    body.app-style #note-section {
+        width: 90%;
+        padding: 15px;
+    }
+
+    /* Make Notes Take Full Width */
+    body.app-style #notesContainer {
+        flex-direction: column;
+        width: 90%;
+    }
+
+    body.app-style .note {
+        width: 100%;
+        min-height: 100px;
+    }
+
+    /* Adjust Logout Button */
+    body.app-style #logout-Btn {
+        top: 10px;
+        right: 10px;
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    /* Adjust Footer */
+    body.app-style footer {
+        position: relative;
+        text-align: center;
+        padding: 10px;
+    }
+}
+

@@ -3,20 +3,21 @@ const AUTH_URL = "http://localhost:5000/api/auth";
 
 
 
+// Function to display messages (success or error)
 function showMessage(message, type = "success") {
-    const messageBox = document.getElementById("message-Box"); 
+    const messageBox = document.getElementById("message-Box");
 
     messageBox.textContent = message; 
     messageBox.className = `message ${type === "error" ? "error" : "success"}`; 
     messageBox.style.display = "block"; 
 
+    // Hide message after 3 seconds
     setTimeout(() => {
-        messageBox.style.display = "none"; 
+        messageBox.style.display = "none";
     }, 3000);
 }
 
-
-
+// Function to toggle password visibility
 function togglePassword(inputId, textId) {
     const passwordInput = document.getElementById(inputId);
     const showText = document.querySelector(`[onclick="togglePassword('${inputId}', '${textId}')"]`);
@@ -30,16 +31,17 @@ function togglePassword(inputId, textId) {
     }
 }
 
-
+// Handle login form submission
 document.getElementById("loginForm").addEventListener("submit", async (e) => {
     e.preventDefault();
     await loginUser();
 });
 
+// Initialize app when the page loads
 document.addEventListener("DOMContentLoaded", () => {
-    checkAuth();
+    checkAuth(); // Check if the user is logged in
 
-    const token = localStorage.getItem("token"); 
+    const token = localStorage.getItem("token");
 
     if (token) {
         document.body.classList.add("app-style"); 
@@ -49,19 +51,23 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.classList.remove("app-style"); 
     }
 
+    // Hide delete confirmation modal by default
     document.getElementById("deleteModal").style.display = "none";
 
+    // Logout button event listener
     const logoutBtn = document.getElementById("logout-Btn"); 
     if (logoutBtn) {
         logoutBtn.addEventListener("click", logout);
     }
 
+    // Add note form event listener
     document.getElementById("noteForm").addEventListener("submit", async (e) => {
         e.preventDefault();
         await addNote();
     });
 });
 
+// Handle registration form submission
 document.getElementById("registerForm").addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -83,12 +89,11 @@ document.getElementById("registerForm").addEventListener("submit", async (e) => 
         showMessage("Registration successful! You can now log in.");
         document.getElementById("registerForm").reset();
     } catch (error) {
-        console.log("Error registering user:", error);
         showMessage("Registration failed.", "error");
     }
 });
 
-//  Login User
+// Function to log in the user
 async function loginUser() {
     const email = document.getElementById("login-email").value;
     const password = document.getElementById("login-password").value;
@@ -109,14 +114,13 @@ async function loginUser() {
         showMessage("Login successful!");
         document.body.classList.remove("login-style");
         document.body.classList.add("app-style"); 
-        checkAuth(); // Show notes after login
+        checkAuth(); // Load notes after login
     } catch (error) {
-        console.error("Login error:", error);
         showMessage("Login failed. Check your credentials.", "error");
     }
 }
 
-// Check if User is Logged In
+// Function to check if the user is authenticated
 function checkAuth() {
     const token = localStorage.getItem("token");
 
@@ -135,33 +139,30 @@ function checkAuth() {
     }
 }
 
-//  Logout Function
+// Function to log out the user
 function logout() {
     localStorage.removeItem("token");
     showMessage("Logged out successfully!", "success");
-    setTimeout(() => location.reload(), 1500); // Reload after message
+    setTimeout(() => location.reload(), 1500); // Reload page after logout
 }
 
-//  Show Login Form
+// Function to show login form
 function showLogin() {
     document.getElementById("register-section").style.display = "none";
     document.getElementById("login-section").style.display = "block";
 }
 
-// Show Register Form
+// Function to show registration form
 function showRegister() {
     document.getElementById("register-section").style.display = "block";
     document.getElementById("login-section").style.display = "none";
 }
 
-//  Fetch Notes (Requires Authentication)
+// Fetch notes from API
 async function fetchNotes() {
     try {
         const token = localStorage.getItem("token");
-        if (!token) {
-            console.error("No token found. Please log in.");
-            return;
-        }
+        if (!token) return;
 
         const response = await fetch(API_URL, {
             headers: { "Authorization": `Bearer ${token}` },
@@ -172,24 +173,18 @@ async function fetchNotes() {
         const notes = await response.json();
         displayNotes(notes);
     } catch (error) {
-        console.log("Error fetching notes:", error);
+        console.error("Error fetching notes:", error);
     }
 }
 
-// Add Note (Requires Authentication)
+// Function to add a new note
 async function addNote() {
     const title = document.getElementById("title").value.trim();
     const description = document.getElementById("description").value.trim();
     const token = localStorage.getItem("token");
 
-    // Debugging log to check input value
-    console.log("Description entered:", description);
-
-    // Count words correctly
+    // Count words in the description
     const wordCount = description.split(/\s+/).filter(word => word.length > 0).length;
-
-    // Debugging log to check word count
-    console.log("Word count:", wordCount);
 
     if (wordCount < 5) {
         showMessage("Please enter at least 5 words in the description.", "error");
@@ -212,15 +207,11 @@ async function addNote() {
         fetchNotes();
         showMessage("Note added successfully!", "success");
     } catch (error) {
-        console.log("Error adding note", error);
         showMessage("Failed to add note.", "error");
     }
 }
 
-
-let noteToDelete = null; // Store the note ID temporarily
-
-// Show modal when delete button is clicked
+// Function to show delete confirmation modal
 function confirmDeleteNote(id) {
     noteToDelete = id;
     document.getElementById("deleteModal").style.display = "flex";
@@ -229,7 +220,7 @@ function confirmDeleteNote(id) {
 // Close modal when "No" is clicked
 document.getElementById("cancelDelete").addEventListener("click", () => {
     document.getElementById("deleteModal").style.display = "none";
-    noteToDelete = null; // Reset stored ID
+    noteToDelete = null; 
 });
 
 // Delete note when "Yes" is clicked
@@ -250,12 +241,11 @@ document.getElementById("confirmDelete").addEventListener("click", async () => {
         document.getElementById("deleteModal").style.display = "none";
         fetchNotes(); // Refresh notes
     } catch (error) {
-        console.error("Error deleting note:", error);
         showMessage("Failed to delete note.", "error");
     }
 });
 
-
+// Function to display notes
 function displayNotes(notes) {
     const notesContainer = document.getElementById("notesContainer");
     notesContainer.innerHTML = "";
@@ -265,11 +255,9 @@ function displayNotes(notes) {
         noteElement.classList.add("note");
 
         noteElement.innerHTML = `
-            <div>
-                <h3>${note.title}</h3>
-                <p>${note.description}</p>
-                <small>${new Date(note.createdAt).toLocaleString()}</small>
-            </div>
+            <h3>${note.title}</h3>
+            <p>${note.description}</p>
+            <small>${new Date(note.createdAt).toLocaleString()}</small>
             <button class="delete-Btn" onclick="confirmDeleteNote('${note._id}')">Delete</button>
         `;
 

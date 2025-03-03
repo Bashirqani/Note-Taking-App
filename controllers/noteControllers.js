@@ -1,4 +1,4 @@
-const Note = require('../models/noteModel'); // Import the Note model
+const Note = require('../models/noteModel'); 
 
 // Create Note
 const createNote = async (req, res) => {

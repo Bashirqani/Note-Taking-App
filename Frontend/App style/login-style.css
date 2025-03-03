@@ -110,6 +110,40 @@ body.login-style footer {
     text-decoration: underline;
 }
 
+/* Responsive Styles for Login Page */
+@media screen and (max-width: 768px) {
+    body.login-style {
+        padding: 10px;
+    }
+
+    body.login-style main {
+        width: 100%;
+        padding: 10px;
+    }
+
+    /* Make Login & Register Sections Full Width */
+    body.login-style section {
+        width: 90%;
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+
+    /* Adjust Input Fields */
+    body.login-style input,
+    body.login-style button {
+        padding: 12px 2px;
+        font-size: 16px;
+    }
+
+    /* Adjust Footer */
+    body.login-style footer {
+        position: relative;
+        text-align: center;
+        padding: 10px;
+    }
+}
+
+
 
 
 
