@@ -1,3 +1,5 @@
+/*inside app styling */
+
 body.app-style {
     font-family: Arial, sans-serif;
     background: linear-gradient(to right, #2c3e50, #4ca1af);
@@ -58,11 +60,11 @@ body.app-style #add-note-section {
     background: #34495e;
     padding: 20px;
     border-radius: 10px;
-    width: 40%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 2px solid #2c3e50; /* Matching border */
+    border: 2px solid #2c3e50; 
 }
 
 /* Form Inputs */
@@ -99,21 +101,22 @@ body.app-style button:hover {
     background-color: #2980b9;
 }
 
-/* Right Side: Notes Section */
+
 /* Right Side: Notes Section */
 body.app-style #note-section {
-    width: 55%;
+    width: 50%;
     background: #34495e;
     padding: 20px;
     border-radius: 10px;
     border: 2px solid #2c3e50;
+    height: 67vh;
 }
 
 /* Notes Container (Fix) */
 body.app-style #notesContainer {
     display: flex;
     flex-wrap: wrap; /* Ensures notes don't overlap */
-    gap: 20px; /* Space between notes */
+    gap: 20px; 
     align-items: flex-start;
 }
 
@@ -156,13 +159,13 @@ body.app-style .delete-Btn {
 body.app-style .delete-btn:hover {
     background: #a93226;
 }
-
+/*error custom messages*/
 #message-Box {
     position: fixed;
     top: 10px;
     left: 50%;
     transform: translateX(-50%);
-    background: #27ae60; /* Green for success */
+    background: #27ae60; 
     color: white;
     padding: 12px 20px;
     border-radius: 5px;
@@ -175,7 +178,7 @@ body.app-style .delete-btn:hover {
 }
 
 #message-Box.error {
-    background: #e74c3c; /* Red for errors */
+    background: #e74c3c; 
 }
 
 .hidden {
@@ -192,7 +195,7 @@ body.app-style .delete-btn:hover {
 
 .password-container input {
     flex: 1;
-    padding-right: 90px; /* Make space for the "Show password" text */
+    padding-right: 90px; 
 }
 
 .show-password {
@@ -210,7 +213,7 @@ body.app-style .delete-btn:hover {
 
 /* Modal Styling */
 .modal {
-    display: none; /* Hidden by default */
+    display: none; 
     position: fixed;
     z-index: 1000; /* Ensures it stays on top */
     left: 0;
