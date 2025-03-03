@@ -1,6 +1,5 @@
 const Note = require('../models/noteModel'); 
 
-// Create Note
 const createNote = async (req, res) => {
     try {
         const { title, description, completed } = req.body;
@@ -9,7 +8,12 @@ const createNote = async (req, res) => {
             return res.status(400).json({ error: 'Title and description are required' });
         }
 
-        const note = await Note.create({ title, description, completed });
+        const note = await Note.create({
+            title,
+            description,
+            completed,
+            user: req.user.id, // Associate note with logged-in user
+        });
 
         res.status(201).json(note);
     } catch (err) {
@@ -17,15 +21,18 @@ const createNote = async (req, res) => {
     }
 };
 
-// Get all Notes
+// get all notes
 const getNote = async (req, res) => {
     try {
-        const notes = await Note.find();
+        const userId = req.user.id; // Get logged-in user ID
+        const notes = await Note.find({ user: userId }); // Fetch only user's notes
+
         res.status(200).json(notes);
     } catch (err) {
         res.status(500).json({ error: 'Server error' });
     }
 };
+
 
 // Get a Note by ID
 const getNoteById = async (req, res) => {
