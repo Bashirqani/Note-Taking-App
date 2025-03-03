@@ -10,14 +10,11 @@ Delete confirmation modal before removing notes.
 Setup Instructions. 
 
 1️. Clone the Repository
-git clone https://github.com/yourusername/note-taking-app.git
+git clone https://github.com/Bashirqani/Note-Taking-App.git
 cd note-taking-app
 
 
 2️. Install Dependencies
-bash
-Copy
-Edit
 npm install
 
 
