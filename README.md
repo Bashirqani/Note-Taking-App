@@ -1,3 +1,7 @@
+
+Open preview for better layout.
+
+
 Features of my app.
 
 Add new notes with a title and description.
@@ -9,25 +13,21 @@ Delete confirmation modal before removing notes.
 
 Setup Instructions. 
 
-1️. Clone the Repository
-git clone https://github.com/Bashirqani/Note-Taking-App.git
-cd note-taking-app
 
-
-2️. Install Dependencies
+1. Install Dependencies
 npm install
 
 
-3️. Set Up MongoDB
+2. Set Up MongoDB
 Make sure MongoDB is installed and running on your system.
 Update your MongoDB connection URL inside app.js; 
 mongoose.connect('your_mongodb_connection_string', { useNewUrlParser: true, useUnifiedTopology: true });
 
 
-4️.  Run the Server
+3.  Run the Server
 node server.js or npm start.
 
-5️.  Open the App
+4.  Open the App
 Visit http://localhost:3000 in your browser.
 
 
@@ -86,6 +86,12 @@ Ensuring form validation (minimum words requirement) improved my JavaScript skil
 Creating a modal confirmation for delete actions helped me learn more about event handling in javascript. 
 Fixing CSS layout issues (sticky notes overlapping) made my understanding of Flexbox and Grid mcuh better and how implement them.
 Debugging unexpected modal pop-ups after reload helped me improve my understanding on where the error occured and what not to do to prevent it.
+
+
+
+My gitHub Link. 
+
+ https://github.com/Bashirqani/Note-Taking-App.git
 
 
 
